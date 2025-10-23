@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shopping List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1 class="app-title">
+                <span class="icon">🛒</span>
+                Shopping List
+            </h1>
+            <p class="subtitle">Organize your shopping effortlessly</p>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <button class="nav-item active" id="navShopping" onclick="switchDashboardTab('shopping')">
+                    <span class="nav-icon">🛒</span>
+                    <span class="nav-text">Shopping List</span>
+                </button>
+                <button class="nav-item" id="navHistory" onclick="switchDashboardTab('history')">
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">History</span>
+                </button>
+                <button class="nav-item" id="navReports" onclick="switchDashboardTab('reports')">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Reports</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            <!-- Shopping List Tab -->
+            <div id="shoppingContent" class="dashboard-tab active">
+            <!-- Add Item Section -->
+            <section class="add-section">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="itemInput" 
+                        class="item-input" 
+                        placeholder="Add a new item..."
+                        autocomplete="off"
+                    >
+                    <div id="suggestions" class="suggestions-dropdown"></div>
+                </div>
+                <button id="addBtn" class="btn btn-primary">
+                    <span class="btn-icon">+</span>
+                    Add Item
+                </button>
+            </section>
+
+            <!-- Current List Section -->
+            <section class="current-list-section">
+                <div class="section-header">
+                    <h2 class="section-title">Today's List</h2>
+                    <span id="currentDate" class="date-badge"></span>
+                </div>
+                <div id="currentList" class="items-container">
+                    <div class="empty-state">
+                        <span class="empty-icon">📝</span>
+                        <p>Your shopping list is empty</p>
+                        <p class="empty-hint">Start adding items above</p>
+                    </div>
+                </div>
+                <div class="list-actions" id="listActions" style="display: none;">
+                    <button id="clearBtn" class="btn btn-secondary">Clear All</button>
+                    <div class="list-summary">
+                        <div class="item-count">
+                            <span id="itemCount">0</span> items
+                        </div>
+                        <div class="total-price">
+                            Total: ₹<span id="totalPrice">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            </div>
+
+            <!-- History Tab -->
+            <div id="historyContent" class="dashboard-tab">
+                <div class="tab-header">
+                    <h2 class="tab-title">📦 Shopping History</h2>
+                    <p class="tab-subtitle">View your previous shopping lists</p>
+                </div>
+                <div id="historyContainer" class="history-container">
+                    <div class="empty-state">
+                        <span class="empty-icon">📦</span>
+                        <p>No previous lists</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reportsContent" class="dashboard-tab">
+                <div class="tab-header">
+                    <h2 class="tab-title">📊 Reports & Analytics</h2>
+                    <p class="tab-subtitle">Track your spending patterns</p>
+                </div>
+                <div class="report-tabs">
+                    <button class="report-tab active" onclick="showReport('monthly')">Monthly</button>
+                    <button class="report-tab" onclick="showReport('quarterly')">Quarterly</button>
+                    <button class="report-tab" onclick="showReport('yearly')">Yearly</button>
+                </div>
+                <div id="reportContent" class="report-content">
+                    <!-- Report data will be rendered here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
