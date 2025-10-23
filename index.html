@@ -38,6 +38,10 @@
                     <span class="nav-icon">📊</span>
                     <span class="nav-text">Reports</span>
                 </button>
+                <button class="nav-item" id="navSettings" onclick="switchDashboardTab('settings')">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </button>
             </nav>
         </aside>
 
@@ -118,6 +122,95 @@
                 </div>
                 <div id="reportContent" class="report-content">
                     <!-- Report data will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settingsContent" class="dashboard-tab">
+                <div class="tab-header">
+                    <h2 class="tab-title">⚙️ Settings & Data Management</h2>
+                    <p class="tab-subtitle">Backup, restore, and manage your data</p>
+                </div>
+                
+                <div class="settings-container">
+                    <!-- Backup & Restore Section -->
+                    <div class="settings-section">
+                        <h3 class="settings-section-title">💾 Backup & Restore</h3>
+                        <p class="settings-section-description">
+                            Protect your data from browser cache clearing. Download backups regularly and restore them anytime.
+                        </p>
+                        
+                        <div class="settings-actions">
+                            <div class="settings-card">
+                                <div class="settings-card-icon">💾</div>
+                                <div class="settings-card-content">
+                                    <h4 class="settings-card-title">Backup Data</h4>
+                                    <p class="settings-card-description">
+                                        Download all your shopping lists, history, and data as a JSON file.
+                                        Keep it safe in cloud storage or your device.
+                                    </p>
+                                    <button class="btn btn-primary" onclick="exportData()">
+                                        📥 Download Backup
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-icon">📤</div>
+                                <div class="settings-card-content">
+                                    <h4 class="settings-card-title">Restore Data</h4>
+                                    <p class="settings-card-description">
+                                        Upload a backup file to restore your data. This will replace all current data.
+                                    </p>
+                                    <button class="btn btn-primary" onclick="document.getElementById('restoreFileInput').click()">
+                                        📤 Upload Backup
+                                    </button>
+                                    <input type="file" id="restoreFileInput" accept=".json" style="display: none;" onchange="importData(event)">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-tips">
+                            <h4 style="margin-bottom: 10px; color: var(--dark);">💡 Tips:</h4>
+                            <ul style="margin: 0; padding-left: 20px; color: #666;">
+                                <li>Backup regularly (weekly or monthly)</li>
+                                <li>Always backup before clearing browser cache</li>
+                                <li>Store backups in cloud storage (Google Drive, Dropbox)</li>
+                                <li>Use backups to transfer data between devices</li>
+                                <li>Backup file format: <code>shopping-list-backup-YYYY-MM-DD.json</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Info Section -->
+                    <div class="settings-section">
+                        <h3 class="settings-section-title">📊 Your Data</h3>
+                        <div class="data-stats">
+                            <div class="data-stat-card">
+                                <div class="data-stat-value" id="statCurrentItems">0</div>
+                                <div class="data-stat-label">Current Items</div>
+                            </div>
+                            <div class="data-stat-card">
+                                <div class="data-stat-value" id="statHistoryLists">0</div>
+                                <div class="data-stat-label">History Lists</div>
+                            </div>
+                            <div class="data-stat-card">
+                                <div class="data-stat-value" id="statTotalItems">0</div>
+                                <div class="data-stat-label">Unique Items (All Time)</div>
+                            </div>
+                        </div>
+                        <div class="settings-tips" style="margin-top: 20px;">
+                            <h4 style="margin-bottom: 10px; color: var(--dark);">ℹ️ About Your Data:</h4>
+                            <ul style="margin: 0; padding-left: 20px; color: #666;">
+                                <li><strong>Current Items:</strong> Items in your active shopping list</li>
+                                <li><strong>History Lists:</strong> Number of completed shopping lists saved</li>
+                                <li><strong>Unique Items (All Time):</strong> Total different items you've ever added (stored in browser for autocomplete suggestions)</li>
+                            </ul>
+                            <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">
+                                <strong>Note:</strong> The "Unique Items" count may be higher than items in your backup file because it includes all items ever added to help with autocomplete suggestions, even if some lists were deleted.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

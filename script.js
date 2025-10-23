@@ -601,7 +601,24 @@ function switchDashboardTab(tabName) {
         document.getElementById('reportsContent').classList.add('active');
         // Generate monthly report by default when switching to reports tab
         showReport('monthly');
+    } else if (tabName === 'settings') {
+        document.getElementById('navSettings').classList.add('active');
+        document.getElementById('settingsContent').classList.add('active');
+        // Update stats when switching to settings tab
+        updateSettingsStats();
     }
+}
+
+// ===== Settings Functions =====
+function updateSettingsStats() {
+    // Update current items count
+    document.getElementById('statCurrentItems').textContent = currentListItems.length;
+    
+    // Update history lists count
+    document.getElementById('statHistoryLists').textContent = historyLists.length;
+    
+    // Update total unique items count
+    document.getElementById('statTotalItems').textContent = allItems.size;
 }
 
 // ===== Price & Quantity Modal Functions =====
@@ -1195,7 +1212,142 @@ function escapeHtml(text) {
 function showNotification(message, type = 'success') {
     // Simple notification - you can enhance this with a toast library
     console.log(`[${type.toUpperCase()}] ${message}`);
+    
+    // Create toast notification
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#f59e0b'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+        font-family: Poppins, sans-serif;
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
+
+// ===== Backup & Restore Functions =====
+function exportData() {
+    try {
+        // Gather all data
+        const backupData = {
+            version: '1.0',
+            exportDate: new Date().toISOString(),
+            currentList: {
+                date: getTodayDate(),
+                items: currentListItems
+            },
+            history: historyLists,
+            allItems: [...allItems]
+        };
+        
+        // Convert to JSON
+        const jsonString = JSON.stringify(backupData, null, 2);
+        
+        // Create blob and download
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `shopping-list-backup-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        showNotification('✅ Backup downloaded successfully!', 'success');
+    } catch (error) {
+        console.error('Export error:', error);
+        showNotification('❌ Failed to create backup', 'error');
+    }
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const backupData = JSON.parse(e.target.result);
+            
+            // Validate backup data
+            if (!backupData.version || !backupData.currentList || !backupData.history) {
+                throw new Error('Invalid backup file format');
+            }
+            
+            // Confirm before restoring
+            const confirmMsg = `This will replace all your current data with the backup from ${new Date(backupData.exportDate).toLocaleDateString()}.\n\nContinue?`;
+            if (!confirm(confirmMsg)) {
+                event.target.value = ''; // Reset file input
+                return;
+            }
+            
+            // Restore data
+            currentListItems = backupData.currentList.items || [];
+            historyLists = backupData.history || [];
+            allItems = new Set(backupData.allItems || []);
+            
+            // Save to localStorage
+            saveCurrentList();
+            saveHistory();
+            saveAllItems();
+            
+            // Refresh UI
+            renderCurrentList();
+            renderHistory();
+            
+            showNotification('✅ Data restored successfully!', 'success');
+            
+            // Reset file input
+            event.target.value = '';
+        } catch (error) {
+            console.error('Import error:', error);
+            showNotification('❌ Failed to restore backup. Invalid file format.', 'error');
+            event.target.value = '';
+        }
+    };
+    reader.readAsText(file);
+}
+
+// Add CSS animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
 
 // ===== Initialize on Page Load =====
 document.addEventListener('DOMContentLoaded', initApp);

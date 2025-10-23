@@ -61,13 +61,20 @@ A beautiful, modern, and feature-rich shopping list application built with vanil
 - Responsive layout works on all devices
 - Custom styled checkboxes and buttons
 
-### 6. **Local Storage**
+### 6. **Backup & Restore**
+- 💾 **Backup Data** - Download all your data as a JSON file
+- 📥 **Restore Data** - Upload backup file to restore your data
+- 🔒 **Safe from cache clearing** - Keep backups to prevent data loss
+- 📱 **Transfer between devices** - Use backup file to move data
+- 📅 **Timestamped backups** - Each backup file includes the date
+
+### 7. **Local Storage**
 - All data is stored locally in your browser
 - No internet connection required
 - Fast and private - your data never leaves your device
 - Automatic saving as you work
 
-### 7. **Price & Quantity Tracking**
+### 8. **Price & Quantity Tracking**
 - 💰 Add price per 1000g (1 Kg) for each item
 - ⚖️ Enter quantity in grams
 - 🧮 Automatic calculation: (Price/Kg ÷ 1000) × Quantity
@@ -81,7 +88,7 @@ A beautiful, modern, and feature-rich shopping list application built with vanil
 - Bought: 500g
 - Calculated Price: ₹50
 
-### 8. **Reports & Analytics with Charts** 📊
+### 9. **Reports & Analytics with Charts** 📊
 - 📊 **Monthly Reports**: View spending by month with detailed breakdown
 - 📈 **Quarterly Reports**: Track spending patterns by quarter (Q1, Q2, Q3, Q4)
 - 📅 **Yearly Reports**: Annual spending summary and item analysis
@@ -103,7 +110,7 @@ A beautiful, modern, and feature-rich shopping list application built with vanil
 - Item-wise breakdown (quantity & price)
 - Sortable by spending
 
-### 9. **Additional Features**
+### 10. **Additional Features**
 - ✅ Check off items as you shop
 - 🗑️ Delete individual items
 - 🧹 Clear entire list (automatically saves to history)
@@ -159,6 +166,16 @@ Works on all modern browsers:
 7. **View Total**: See the grand total at the bottom of your list
 8. **View History**: Click "Show History" to see previous lists with prices
 9. **Clear List**: Use "Clear All" when you're done shopping
+10. **💾 Backup Data**: Click "Backup Data" to download all your data as a JSON file
+11. **📥 Restore Data**: Click "Restore Data" to upload and restore from a backup file
+
+### 💡 Backup & Restore Tips
+
+- **Regular Backups**: Download a backup weekly or monthly
+- **Before Clearing Cache**: Always backup before clearing browser data
+- **Transfer Devices**: Use backup file to move data to another device/browser
+- **Safe Storage**: Keep backup files in cloud storage (Google Drive, Dropbox, etc.)
+- **File Format**: Backups are saved as `shopping-list-backup-YYYY-MM-DD.json`
 
 ## 📝 Future Enhancement Ideas
 
