@@ -5,8 +5,9 @@ const STORAGE_KEYS = {
     ALL_ITEMS: 'shopping_all_items'
 };
 
-// ===== Predefined Vegetables List with Emojis, Telugu Names & Telugu Script (Alphabetically Sorted) =====
+// ===== Complete Indian Groceries List with Emojis, Telugu Names & Telugu Script (Alphabetically Sorted) =====
 const VEGETABLES = [
+    // Vegetables
     { name: 'Amaranth / Totakura / తోటకూర', emoji: '🥬' },
     { name: 'Artichoke / Artichoke / ఆర్టిచోక్', emoji: '🌱' },
     { name: 'Ash Gourd / Budida Gummadi / బూడిద గుమ్మడి', emoji: '🥒' },
@@ -68,7 +69,112 @@ const VEGETABLES = [
     { name: 'Turnip / Turnip / టర్నిప్', emoji: '🌱' },
     { name: 'Water Chestnut / Neeti Kaya / నీటి కాయ', emoji: '🌰' },
     { name: 'Yam / Chilaga Dumpa / చిలగడదుంప', emoji: '🥔' },
-    { name: 'Zucchini / Zucchini / జుకీనీ', emoji: '🥒' }
+    { name: 'Zucchini / Zucchini / జుకీనీ', emoji: '🥒' },
+    
+    // Fruits
+    { name: 'Apple / Apple / ఆపిల్', emoji: '🍎' },
+    { name: 'Banana / Arati Pandu / అరటి పండు', emoji: '🍌' },
+    { name: 'Grapes / Draksha / ద్రాక్ష', emoji: '🍇' },
+    { name: 'Guava / Jama / జామ', emoji: '🍈' },
+    { name: 'Mango / Mamidi / మామిడి', emoji: '🥭' },
+    { name: 'Orange / Orange / ఆరంజ్', emoji: '🍊' },
+    { name: 'Papaya / Boppayi / బొప్పాయి', emoji: '🍈' },
+    { name: 'Pineapple / Ananas / అనాస', emoji: '🍍' },
+    { name: 'Pomegranate / Danimma / దానిమ్మ', emoji: '🍎' },
+    { name: 'Watermelon / Puchakaya / పుచ్చకాయ', emoji: '🍉' },
+    
+    // Pulses & Lentils
+    { name: 'Bengal Gram / Senaga Pappu / శెనగ పప్పు', emoji: '🫘' },
+    { name: 'Black Gram / Minapa Pappu / మినప పప్పు', emoji: '🫘' },
+    { name: 'Green Gram / Pesara Pappu / పెసర పప్పు', emoji: '🫘' },
+    { name: 'Kidney Beans / Rajma / రాజ్మా', emoji: '🫘' },
+    { name: 'Lentils / Dal / దాల్', emoji: '🫘' },
+    { name: 'Red Gram / Kandi Pappu / కంది పప్పు', emoji: '🫘' },
+    { name: 'Split Chickpeas / Chana Dal / చనా దాల్', emoji: '🫘' },
+    
+    // Rice & Grains
+    { name: 'Basmati Rice / Basmati Biyyam / బాస్మతి బియ్యం', emoji: '🍚' },
+    { name: 'Brown Rice / Brown Rice / బ్రౌన్ రైస్', emoji: '🍚' },
+    { name: 'Poha / Atukulu / అటుకులు', emoji: '🍚' },
+    { name: 'Rava / Bombay Rava / బొంబాయి రవ్వ', emoji: '🌾' },
+    { name: 'Rice / Biyyam / బియ్యం', emoji: '🍚' },
+    { name: 'Wheat / Godhumalu / గోధుమలు', emoji: '🌾' },
+    
+    // Flours
+    { name: 'Besan / Senaga Pindi / శెనగ పిండి', emoji: '🌾' },
+    { name: 'Maida / Maida / మైదా', emoji: '🌾' },
+    { name: 'Rice Flour / Biyyam Pindi / బియ్యం పిండి', emoji: '🌾' },
+    { name: 'Wheat Flour / Atta / ఆట్టా', emoji: '🌾' },
+    
+    // Spices
+    { name: 'Asafoetida / Inguva / ఇంగువ', emoji: '🧂' },
+    { name: 'Bay Leaf / Biryani Aaku / బిర్యానీ ఆకు', emoji: '🍃' },
+    { name: 'Black Pepper / Miriyalu / మిరియాలు', emoji: '🌶️' },
+    { name: 'Cardamom / Elakulu / ఏలకులు', emoji: '🧂' },
+    { name: 'Cinnamon / Dalchina Chekka / దాల్చిన చెక్క', emoji: '🧂' },
+    { name: 'Cloves / Lavangalu / లవంగాలు', emoji: '🧂' },
+    { name: 'Coriander Powder / Dhaniyalu Podi / ధనియాలు పొడి', emoji: '🧂' },
+    { name: 'Coriander Seeds / Dhaniyalu / ధనియాలు', emoji: '🌾' },
+    { name: 'Cumin Seeds / Jeelakarra / జీలకర్ర', emoji: '🧂' },
+    { name: 'Fenugreek Seeds / Menthulu / మెంతులు', emoji: '🌾' },
+    { name: 'Garam Masala / Garam Masala / గరం మసాలా', emoji: '🧂' },
+    { name: 'Mustard Seeds / Avalu / ఆవాలు', emoji: '🌾' },
+    { name: 'Red Chili Powder / Karam Podi / కారం పొడి', emoji: '🌶️' },
+    { name: 'Turmeric Powder / Pasupu Podi / పసుపు పొడి', emoji: '🧂' },
+    
+    // Cooking Essentials
+    { name: 'Cooking Oil / Nune / నూనె', emoji: '🫗' },
+    { name: 'Ghee / Neyyi / నెయ్యి', emoji: '🧈' },
+    { name: 'Mustard Oil / Avala Nune / ఆవాల నూనె', emoji: '🫗' },
+    { name: 'Olive Oil / Olive Oil / ఆలివ్ ఆయిల్', emoji: '🫗' },
+    { name: 'Salt / Uppu / ఉప్పు', emoji: '🧂' },
+    { name: 'Sugar / Bellam / బెల్లం', emoji: '🍬' },
+    { name: 'Vinegar / Vinegar / వినిగర్', emoji: '🫗' },
+    
+    // Dairy Products
+    { name: 'Butter / Butter / బటర్', emoji: '🧈' },
+    { name: 'Buttermilk / Majjiga / మజ్జిగ', emoji: '🥛' },
+    { name: 'Cheese / Cheese / చీజ్', emoji: '🧀' },
+    { name: 'Curd / Perugu / పెరుగు', emoji: '🥛' },
+    { name: 'Milk / Palu / పాలు', emoji: '🥛' },
+    { name: 'Paneer / Paneer / పన్నీర్', emoji: '🧀' },
+    
+    // Meat & Seafood
+    { name: 'Chicken / Kodi / కోడి', emoji: '🍗' },
+    { name: 'Eggs / Gudlu / గుడ్లు', emoji: '🥚' },
+    { name: 'Fish / Chepa / చేప', emoji: '🐟' },
+    { name: 'Mutton / Meka / మేక', emoji: '🍖' },
+    { name: 'Prawns / Royyalu / రొయ్యలు', emoji: '🦐' },
+    
+    // Snacks & Breakfast
+    { name: 'Biscuits / Biscuits / బిస్కెట్లు', emoji: '🍪' },
+    { name: 'Bread / Bread / బ్రెడ్', emoji: '🍞' },
+    { name: 'Cornflakes / Cornflakes / కార్న్‌ఫ్లేక్స్', emoji: '🥣' },
+    { name: 'Idli Rava / Idli Rava / ఇడ్లీ రవ్వ', emoji: '🍚' },
+    { name: 'Namkeen / Mixture / మిక్చర్', emoji: '🥨' },
+    { name: 'Oats / Oats / ఓట్స్', emoji: '🥣' },
+    
+    // Beverages
+    { name: 'Coffee / Coffee / కాఫీ', emoji: '☕' },
+    { name: 'Tea / Tea / టీ', emoji: '🍵' },
+    
+    // Household Items
+    { name: 'Detergent / Washing Powder / వాషింగ్ పౌడర్', emoji: '🧼' },
+    { name: 'Dish Soap / Dish Soap / డిష్ సోప్', emoji: '🧴' },
+    { name: 'Hair Oil / Hair Oil / హెయిర్ ఆయిల్', emoji: '🧴' },
+    { name: 'Shampoo / Shampoo / షాంపూ', emoji: '🧴' },
+    { name: 'Soap / Soap / సబ్బు', emoji: '🧼' },
+    { name: 'Toilet Paper / Toilet Paper / టాయిలెట్ పేపర్', emoji: '🧻' },
+    { name: 'Toothpaste / Toothpaste / టూత్‌పేస్ట్', emoji: '🪥' },
+    
+    // Dry Fruits & Nuts
+    { name: 'Almonds / Badam / బాదం', emoji: '🌰' },
+    { name: 'Cashews / Kaju / కాజు', emoji: '🥜' },
+    { name: 'Dates / Khajur / ఖజూర్', emoji: '🍇' },
+    { name: 'Peanuts / Pallilu / పల్లీలు', emoji: '🥜' },
+    { name: 'Pistachios / Pista / పిస్తా', emoji: '🌰' },
+    { name: 'Raisins / Endu Draksha / ఎండు ద్రాక్ష', emoji: '🍇' },
+    { name: 'Walnuts / Walnut / వాల్‌నట్', emoji: '🌰' }
 ];
 
 // ===== State Management =====

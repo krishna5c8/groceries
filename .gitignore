@@ -1,15 +1,17 @@
-# Dependencies
-node_modules/
-package-lock.json
-
 # System files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
 # Logs
 *.log
-npm-debug.log*
 
-# Optional: Uncomment to ignore data file (if you don't want to commit your shopping data)
-# data.json
-
+# Optional: Uncomment if you don't want to track your personal shopping data
+# You can keep localStorage data local to your browser
