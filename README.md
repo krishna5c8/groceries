@@ -39,8 +39,7 @@ A beautiful, modern, and feature-rich shopping list application built with vanil
   - ☕ Beverages (Tea, Coffee)
   - 🧼 Household Items (Soap, Shampoo, Detergent, Hair Oil)
   - 🌰 Dry Fruits & Nuts
-- Previous items you've added with their last used date
-- Shows when you last used each item
+- Search works in English, Telugu, or Telugu script
 - Click on any suggestion to quickly add it
 - Up to 8 suggestions displayed at once
 
